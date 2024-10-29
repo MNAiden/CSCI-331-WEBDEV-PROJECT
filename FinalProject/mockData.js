@@ -82,7 +82,7 @@ export function calculateDynamicValues(data) {
 
   // Calculate dynamic values for various financial goals
   data.monthlyBudget.spending =
-    (netIncome * data.monthlyBudget.discretionarySpendingPercent) / 100;
+    (netIncome * data.monthlyBudget.spendingPercent) / 100;
   data.monthlyBudget.savingsGoal =
     (netIncome * data.monthlyBudget.savingsGoalPercent) / 100;
   data.monthlyBudget.investingAmount =
