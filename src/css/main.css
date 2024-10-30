@@ -1,0 +1,48 @@
+body {
+    background-color: #272938;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1, h2, h3 {
+    color: darkgreen;
+    text-align: center;
+    padding: 10px;
+}
+p {
+    align-self: center;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+.nav {
+    max-width: 90%;
+}
+.cell {
+    width: 100%;
+    border: 3px grey;
+    border-radius: 15px;
+    background-color:whitesmoke;
+    margin: 10px;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+.subsec {
+    width: 95%;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#overview {
+    max-width: 90%;
+}
+#invest, #misc {
+    max-width: 90%;
+    float: left;
+}
+#budget {
+    max-width: 90%;
+    float: right;
+}
+.cell:hover {
+    transform: scale(1.1);
+}
