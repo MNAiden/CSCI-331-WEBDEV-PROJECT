@@ -11,7 +11,7 @@ export const userData = {
     },
     stocksInvestments: {
       totalInvestment: 50000, // Total amount initially invested across all stocks
-      topStocks: [
+        topStocks: [
         {
           name: "Apple",
           symbol: "AAPL",
@@ -67,7 +67,7 @@ export const userData = {
     },
     recommendations: ["a", "b", "c"],
   };
-  
+
   // Helper function to calculate dynamic values based on percentages
   export function calculateDynamicValues(data) {
     // Calculate total expenses and net income
@@ -76,10 +76,10 @@ export const userData = {
       0,
     );
     const netIncome = data.monthlyBudget.income - totalExpenses;
-  
+
     // Calculate cash balance based on remaining income
     data.overview.assetDistribution.cash = netIncome;
-  
+
     // Calculate dynamic values for various financial goals
     data.monthlyBudget.spending =
       (netIncome * data.monthlyBudget.spendingPercent) / 100;
@@ -91,10 +91,9 @@ export const userData = {
       (netIncome * data.monthlyBudget.emergencyFundPercent) / 100;
     data.monthlyBudget.retirementContribution =
       (netIncome * data.monthlyBudget.retirementContributionPercent) / 100;
-  
+
     return data;
   }
-  
+
   // Call this function where the data is used to ensure dynamic values are set
   export const dynamicUserData = calculateDynamicValues(userData);
-  
