@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import axios from 'axios';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
-const API_KEY = 'QHXFG3LIO9U66BD4'; // Replace with your Alpha Vantage API key
+ChartJS.register(ArcElement, Tooltip, Legend);
+
+const API_KEY = process.env.REACT_APP_API_KEY; // Use an .env file for this
 
 const StockCard = ({ stock }) => {
   const [stockData, setStockData] = useState(null);
@@ -37,12 +40,14 @@ const StockCard = ({ stock }) => {
     fetchStockData();
   }, [stock.symbol]);
 
-  // Data for the pie chart
   const chartData = {
     labels: ['Initial Investment', 'Current Value'],
     datasets: [
       {
-        data: [stock.initialInvestment, stockData?.currentPrice * (stock.initialInvestment / stock.currentValue)],
+        data: [
+          stock.initialInvestment,
+          stockData ? stockData.currentPrice * (stock.initialInvestment / stock.currentValue) : stock.initialInvestment,
+        ],
         backgroundColor: ['rgba(75, 192, 192, 0.6)', 'rgba(153, 102, 255, 0.6)'],
       },
     ],

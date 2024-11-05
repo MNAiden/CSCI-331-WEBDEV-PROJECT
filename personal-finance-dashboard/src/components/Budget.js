@@ -1,19 +1,14 @@
-import React from "react";
-import { dynamicUserData } from "../data/mockData";
+import React from 'react';
+import { dynamicUserData } from '../data/mockData';
 
 const Budget = () => {
-  const {
-    expenses,
-    spending,
-    savingsGoal,
-    investingAmount,
-    emergencyFund,
-    retirementContribution,
-  } = dynamicUserData.monthlyBudget;
+  const { income, expenses, spending, savingsGoal, investingAmount, emergencyFund, retirementContribution } = dynamicUserData.monthlyBudget;
 
   return (
-    <div>
+    <div className="cell">
       <h3>Monthly Budget</h3>
+      <p>Income: ${income}</p>
+      <h4>Expenses</h4>
       <ul>
         {expenses.map((expense, index) => (
           <li key={index}>
@@ -22,9 +17,9 @@ const Budget = () => {
         ))}
       </ul>
       <h4>Goals</h4>
-      <p>Discretionary Spending: ${spending}</p>
+      <p>Spending: ${spending}</p>
       <p>Savings Goal: ${savingsGoal}</p>
-      <p>Investing Amount: ${investingAmount}</p>
+      <p>Investing: ${investingAmount}</p>
       <p>Emergency Fund: ${emergencyFund}</p>
       <p>Retirement Contribution: ${retirementContribution}</p>
     </div>

@@ -1,7 +1,6 @@
-.App {
-  text-align: center;
-}
+/* App.css */
 
+/* Logo animation and styling */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -13,6 +12,16 @@
   }
 }
 
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Header specific to App */
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -28,11 +37,30 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Portfolio and stock card specific styles */
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+.stock-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.stock-card {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  text-align: center;
+  width: 300px;
+}
+
+.stock-details {
+  margin-bottom: 1rem;
 }
