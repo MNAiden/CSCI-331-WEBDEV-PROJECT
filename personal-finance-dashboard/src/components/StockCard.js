@@ -5,7 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const API_KEY = process.env.REACT_APP_API_KEY; // Use an .env file for this
+const API_KEY = process.env.REACT_APP_ALPHA_VANTAGE_API_KEY;
 
 const StockCard = ({ stock }) => {
   const [stockData, setStockData] = useState(null);
@@ -15,28 +15,33 @@ const StockCard = ({ stock }) => {
     const fetchStockData = async () => {
       try {
         const response = await axios.get(
-          `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock.symbol}&interval=5min&outputsize=compact&apikey=${API_KEY}`
+          `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock.symbol}&apikey=${API_KEY}`
         );
 
-        const timeSeries = response.data['Time Series (5min)'];
+        console.log("API Response:", response.data);
+
+        const timeSeries = response.data['Time Series (Daily)'];
         if (timeSeries) {
           const latestTimestamp = Object.keys(timeSeries)[0];
           const latestData = timeSeries[latestTimestamp];
           setStockData({
-            currentPrice: latestData['4. close'],
-            open: latestData['1. open'],
-            high: latestData['2. high'],
-            low: latestData['3. low'],
-            volume: latestData['5. volume'],
+            currentPrice: parseFloat(latestData['4. close']),
+            open: parseFloat(latestData['1. open']),
+            high: parseFloat(latestData['2. high']),
+            low: parseFloat(latestData['3. low']),
+            volume: parseInt(latestData['5. volume'], 10),
           });
+        } else if (response.data['Note']) {
+          setError('Rate limit exceeded. Please try again later.');
         } else {
-          setError('No data available');
+          setError('No data available for this symbol.');
         }
       } catch (err) {
         console.error('Error fetching stock data:', err);
         setError('Failed to fetch data');
       }
     };
+
     fetchStockData();
   }, [stock.symbol]);
 
