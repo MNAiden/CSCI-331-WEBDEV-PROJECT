@@ -27,7 +27,7 @@ const Portfolio = () => {
         topStocks.map(async (stock) => {
           const cacheKey = `stockData_${stock.symbol}`;
           const cachedData = JSON.parse(localStorage.getItem(cacheKey));
-          
+
           // If cache exists and API limit is expected, use cached data
           if (cachedData && cachedData.successful) {
             const currentPrice = cachedData.data.currentPrice;
