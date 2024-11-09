@@ -1,75 +1,154 @@
-/* index.css */
-
 /* Reset default styling */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  background-color: #f4f4f9;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.nav {
+  background-color: #282c34;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+/* Main content grid layout */
+.main-content {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1600px;
+  padding: 1rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+}
+
+/* Define each component’s grid area */
+.piechart {
+  grid-area: piechart;
+}
+
+.stockcards {
+  grid-area: stockcards;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Component box styling */
+.box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer styling */
+footer {
+  background-color: #282c34;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+footer h4 {
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr;
   }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  .App {
-    display: flex;
+
+  .stock-cards {
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding: 2rem;
-    background-color: #f4f4f9;
-    min-height: 100vh;
   }
-  
-  .nav {
-    background-color: #282c34;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  /* Main content grid layout */
+}
+
+@media (max-width: 768px) {
   .main-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1rem;
-    width: 100%;
-    max-width: 1200px;
-    padding: 1rem;
+    padding: 0.5rem;
   }
-  
-  /* Each component box styling */
-  .box {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1.5rem;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo animation and styling */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
   }
-  
-  /* Footer styling */
-  footer {
-    background-color: #282c34;
-    color: white;
-    padding: 1rem;
-    text-align: center;
-    width: 100%;
-    margin-top: 2rem;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  
-  footer h4 {
-    margin-bottom: 0.5rem;
+  to {
+    transform: rotate(360deg);
   }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .main-content {
-      padding: 0.5rem;
-    }
+}
+
+/* Portfolio and stock card specific styles */
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+.stock-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 1600px;
+  justify-content: center;
+}
+
+/* Consistent styling for pie chart and stock cards */
+.portfolio-pie-chart {
+  border: 1px solid #ddd;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .portfolio-pie-chart,
+  .stock-card {
+    width: 90%;
   }
-  
+}
