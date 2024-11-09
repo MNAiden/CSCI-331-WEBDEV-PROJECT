@@ -3,7 +3,7 @@ import Overview from './components/Overview';
 import Portfolio from './components/Portfolio';
 import Budget from './components/Budget';
 import Misc from './components/Misc';
-import './App.css';
+import './styles/App.css';
 
 function App() {
     return (

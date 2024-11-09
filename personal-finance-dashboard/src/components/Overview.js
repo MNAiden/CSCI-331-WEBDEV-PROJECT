@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/overview.css';
 import { dynamicUserData } from '../data/mockData';
 
 const Overview = () => {
