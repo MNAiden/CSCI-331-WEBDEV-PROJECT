@@ -17,15 +17,15 @@ const Misc = () => {
             <div className='cells'>
                 <div className='cell'>
                     <h3>Recent Transactions</h3>
-                    <p>Link your account to activate this feature</p>
+                    <p>Link your account to activate this feature.</p>
                 </div>
                 <div className='cell'>
-                    <h3>Recent Transactions</h3>
-                    <p>Link your account to activate this feature</p>
+                    <h3>Statements</h3>
+                    <p>Link your account to activate this feature.</p>
                 </div>
                 <div className='cell'>
-                    <h3>Recent Transactions</h3>
-                    <p>Link your account to activate this feature</p>
+                    <h3>Yearly Summary</h3>
+                    <p>Link your account to activate this feature.</p>
                 </div>
             </div>
         </div>
