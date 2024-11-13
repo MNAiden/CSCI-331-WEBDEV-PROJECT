@@ -1,0 +1,19 @@
+.cells {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 90%;
+    max-width: 1600px;
+    align-items: center;
+    justify-content: center;
+  }
+
+.cell {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+    width: 300px; /* Consistent width for both pie chart and stock cards */
+    max-width: 100%; /* Ensure responsiveness */
+  }
