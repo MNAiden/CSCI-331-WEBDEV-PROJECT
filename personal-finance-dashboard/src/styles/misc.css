@@ -6,6 +6,7 @@
     max-width: 1600px;
     align-items: center;
     justify-content: center;
+    padding-left: 3.5rem;
   }
 
 .cell {
