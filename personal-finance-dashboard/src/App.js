@@ -26,8 +26,7 @@ function App() {
                 </div>
             </main>
             <footer>
-                <h4>Footer Title</h4>
-                <p>Footer content here</p>
+                <p>Created by: Gabe Martens, Victor Becker, Aiden Strong</p>
             </footer>
         </div>
     );

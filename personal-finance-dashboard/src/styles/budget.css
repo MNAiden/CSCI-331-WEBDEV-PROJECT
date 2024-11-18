@@ -1,0 +1,25 @@
+.budget-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px; /* Add spacing between text and chart */
+}
+
+.cell {
+    flex: 1;
+}
+
+.text-section {
+    flex: 1.5; /* Make text section slightly wider */
+}
+
+.chart-section {
+    flex: 1;
+    max-width: 300px; /* Limit the size of the chart */
+}
+
+.chart-section canvas {
+    width: 100% !important;
+    height: auto !important;
+}
