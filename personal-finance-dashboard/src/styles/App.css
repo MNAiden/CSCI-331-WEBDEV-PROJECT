@@ -37,36 +37,3 @@
   color: #61dafb;
 }
 
-/* Portfolio and stock card specific styles */
-.portfolio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-}
-
-.stock-cards {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  width: 90%;
-  max-width: 1600px;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Consistent styling for the pie chart and stock card components */
-.portfolio-pie-chart,
-.stock-card {
-  border: 1px solid #ddd;
-  padding: 1rem;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  text-align: center;
-  width: 300px; /* Consistent width for both pie chart and stock cards */
-  max-width: 100%; /* Ensure responsiveness */
-}
-
-.stock-details {
-  margin-bottom: 1rem;
-}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import StockCard from './StockCard';
 import PortfolioPieChart from './PortfolioPieChart';
+import '../styles/portfolio.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import axios from 'axios';
 import { dynamicUserData } from '../data/mockData';
@@ -10,10 +11,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 const API_KEY = process.env.REACT_APP_ALPHA_VANTAGE_API_KEY;
 const API_LIMIT_WARNING = "API limit reached";
 
-const Portfolio = () => {
+const Portfolio = ({ totalEquity, setTotalEquity }) => {
   const { topStocks } = dynamicUserData.stocksInvestments;
   const [equities, setEquities] = useState([]);
-  const [totalEquity, setTotalEquity] = useState(0);
   const [lastFetchTime, setLastFetchTime] = useState('');
 
   useEffect(() => {
@@ -28,7 +28,6 @@ const Portfolio = () => {
           const cacheKey = `stockData_${stock.symbol}`;
           const cachedData = JSON.parse(localStorage.getItem(cacheKey));
 
-          // If cache exists and API limit is expected, use cached data
           if (cachedData && cachedData.successful) {
             const currentPrice = cachedData.data.currentPrice;
             const equity = stock.shares * currentPrice;
@@ -43,19 +42,16 @@ const Portfolio = () => {
           }
 
           try {
-            // Make API request
             const response = await axios.get(
               `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock.symbol}&apikey=${API_KEY}`
             );
 
-            // Check for API limit note
             if (response.data['Note']) {
               console.warn(API_LIMIT_WARNING);
               setLastFetchTime(cachedData?.timestamp || 'No recent data available');
               return cachedData || { ...stock, equity: 0, stockData: null };
             }
 
-            // Process response if available
             const timeSeries = response.data['Time Series (Daily)'];
             if (timeSeries) {
               const dates = Object.keys(timeSeries);
@@ -75,12 +71,10 @@ const Portfolio = () => {
               const equity = stock.shares * fetchedData.currentPrice;
               total += equity;
 
-              // Store successful API data in localStorage with a success flag
               localStorage.setItem(
                 cacheKey,
                 JSON.stringify({ data: fetchedData, timestamp: now, successful: true })
               );
-              setLastFetchTime(formattedTime);
 
               return {
                 ...stock,
@@ -100,23 +94,27 @@ const Portfolio = () => {
       );
 
       setEquities(equityData);
-      setTotalEquity(total);
+      setTotalEquity(total); // Update the global total equity
     };
 
     fetchAllStockData();
-  }, [topStocks]);
+  }, [topStocks, setTotalEquity]);
 
   const chartData = {
-    labels: equities.map(stock => `${stock.name} (${((stock.equity / totalEquity) * 100).toFixed(2)}%)`),
+    labels: equities.map((stock) =>
+      totalEquity > 0
+        ? `${stock.name} (${((stock.equity / totalEquity) * 100).toFixed(2)}%)`
+        : stock.name
+    ),
     datasets: [
       {
-        data: equities.map(stock => stock.equity),
+        data: equities.map((stock) => stock.equity),
         backgroundColor: [
-          'rgba(34, 139, 34, 0.8)',
-          'rgba(72, 61, 139, 0.8)',
-          'rgba(139, 0, 0, 0.8)',
-          'rgba(255, 140, 0, 0.8)',
-          'rgba(0, 0, 139, 0.8)',
+          'rgba(34, 139, 34, 0.8)', // Green
+          'rgba(72, 61, 139, 0.8)', // Purple
+          'rgba(139, 0, 0, 0.8)', // Red
+          'rgba(255, 140, 0, 0.8)', // Orange
+          'rgba(0, 0, 139, 0.8)', // Blue
         ],
       },
     ],
@@ -124,15 +122,19 @@ const Portfolio = () => {
 
   return (
     <div className="portfolio">
-      <h3>My Portfolio Overview</h3>
-      <p>Last fetched: {lastFetchTime}</p>
-      <div className="portfolio-pie-chart">
-        <PortfolioPieChart chartData={chartData} />
+      <div className="portfolio-title">
+        <h3>My Portfolio Overview</h3>
+        <p>Last fetched: {lastFetchTime}</p>
       </div>
-      <div className="stock-cards">
-        {equities.map((stock) => (
-          <StockCard key={stock.symbol} stock={stock} />
-        ))}
+      <div className="portfolio-content">
+        <div className="portfolio-pie-chart">
+          <PortfolioPieChart chartData={chartData} />
+        </div>
+        <div className="stock-cards">
+          {equities.map((stock) => (
+            <StockCard key={stock.symbol} stock={stock} />
+          ))}
+        </div>
       </div>
     </div>
   );
