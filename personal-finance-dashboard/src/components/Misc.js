@@ -14,19 +14,19 @@ const Misc = () => {
                 <li><a href="https://connect.glacierbank.com/login" target="_blank" rel="noopener noreferrer">Glacier Bank</a></li>
             </ul></p>
             <div className='cells'>
-                <div className='cell'>
+                <div className='Mcell'>
                     <h3>Recent Transactions</h3>
                     <p>Link your account to activate this feature.</p>
                 </div>
-                <div className='cell'>
+                <div className='Mcell'>
                     <h3>Statements</h3>
                     <p>Link your account to activate this feature.</p>
                 </div>
-                <div className='cell'>
+                <div className='Mcell'>
                     <h3>Yearly Summary</h3>
                     <p>Link your account to activate this feature.</p>
                 </div>
-                <div className='cell'>
+                <div className='Mcell'>
                     <h3>Savings Account</h3>
                     <p>Link your account to activate this feature.</p>
                 </div>

@@ -76,7 +76,7 @@ footer h4 {
     flex-direction: column; /* Ensures stacking on medium screens */
   }
   .box {
-    max-width: 80%; /* Slightly wider for laptops */
+    max-width: 90%; /* Slightly wider for laptops */
     padding: 1rem;
   }
 }

@@ -1,20 +1,24 @@
 .cells {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
-    width: 90%;
-    max-width: 1600px;
+    width: 100%;
+    max-width: 1500px;
     align-items: center;
     justify-content: center;
-    padding-left: 3.5rem;
-  }
+}
 
-.cell {
+.Mcell {
     border: 1px solid #ddd;
     padding: 1rem;
     border-radius: 8px;
     background-color: #f9f9f9;
     text-align: center;
-    width: 300px; /* Consistent width for both pie chart and stock cards */
-    max-width: 100%; /* Ensure responsiveness */
-  }
+    width: 250px;
+    max-height: 125px;
+}
+
+ul {
+  padding-left: 1rem;
+}
