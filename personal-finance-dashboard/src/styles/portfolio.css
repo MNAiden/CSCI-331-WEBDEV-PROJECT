@@ -12,18 +12,18 @@ gap: 2rem;
 }
 /* Title and Last Fetch Time Shadow Box */
 .portfolio-title {
-background-color: #ffffff; /* White background */
-border-radius: 12px; /* Rounded corners */
+background-color: #ffffff;
+border-radius: 12px;
 box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-padding: 1.5rem; /* Space inside the box */
+padding: 1.5rem;
 text-align: center; /* Center-align text */
-width: 100%; /* Full width */
+width: 100%;
 max-width: 800px; /* Limit maximum width */
 margin: 0 auto 2rem; /* Center the box and add spacing below */
 }
 
 .portfolio-title h3 {
-font-size: 1.8rem; /* Larger font size for the heading */
+font-size: 1.8rem;
 color: #2c3e50; /* Darker text color */
 margin-bottom: 1rem; /* Space below the heading */
 }
@@ -46,7 +46,8 @@ width: 100%;
 /* Pie Chart Section */
 .portfolio-pie-chart {
 flex: 1; /* Allow the chart to take up one-third of the width */
-max-width: 400px; /* Limit the chart width */
+max-width: 350px;
+min-height: 250px;
 background-color: #f9f9f9;
 padding: 1rem;
 border-radius: 16px;
@@ -65,7 +66,7 @@ height: auto; /* Maintain aspect ratio */
 .stock-cards {
 flex: 2;
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Responsive grid */
+grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); /* Responsive grid */
 gap: 1.5rem;
 width: 100%;
 }
@@ -101,7 +102,7 @@ margin-bottom: 0.5rem;
 
 /* Compact View */
 .stock-card p {
-font-size: 0.9rem; /* Compact text size */
+font-size: 0.9rem;
 color: #7f8c8d;
 margin: 0.5rem 0;
 }
@@ -112,12 +113,12 @@ color: #34495e;
 }
 
 /* Positive and Negative Changes */
-.positive {
+.stock-card span.positive {
 color: #27ae60; /* Accessible green for positive changes */
 font-weight: bold;
 }
 
-.negative {
+.stock-card span.negative {
 color: #e74c3c; /* Accessible red for negative changes */
 font-weight: bold;
 }
@@ -131,10 +132,6 @@ padding: 1.5rem;
 
 .portfolio-content {
 gap: 1.5rem; /* Reduce gap on medium-sized screens */
-}
-
-.portfolio-pie-chart {
-max-width: 300px; /* reduce chart size */
 }
 }
 

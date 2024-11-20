@@ -25,6 +25,12 @@ const StockCard = ({ stock }) => {
     setIsExpanded((prev) => !prev); // Toggle the expanded state
   };
 
+  const getChangeClass = (value) => {
+    if (value > 0) return 'positive';
+    if (value < 0) return 'negative';
+    return 'neutral';
+  };
+
   return (
     <div
       className={`stock-card ${isExpanded ? 'expanded' : ''}`}
@@ -32,16 +38,34 @@ const StockCard = ({ stock }) => {
     >
       <h4>{stock.name} ({stock.symbol})</h4>
       {/* Default view */}
-      <p><strong>Your Equity:</strong> ${equity.toFixed(2)}</p>
+      <p>
+        <strong>Your Equity:</strong> ${equity.toFixed(2)}
+      </p>
 
       {/* Expanded details */}
       {isExpanded && (
         <div className="stock-details">
-          <p>Last Price: ${currentPrice.toFixed(2)}</p>
-          <p>Percent Change: {percentChange.toFixed(2)}%</p>
-          <p>Today's Return: ${todaysReturn.toFixed(2)}</p>
-          <p>Total Return: ${totalReturn.toFixed(2)}</p>
-          <p>Total Percent Change: {totalPercentChange.toFixed(2)}%</p>
+          <p>
+            Last Price: ${currentPrice.toFixed(2)}
+          </p>
+          <p>
+            Percent Change: 
+            <span className={getChangeClass(percentChange)}>
+              {percentChange.toFixed(2)}%
+            </span>
+          </p>
+          <p>
+            Today's Return: 
+            <span className={getChangeClass(todaysReturn)}>
+              ${todaysReturn.toFixed(2)}
+            </span>
+          </p>
+          <p>
+            Total Return: 
+            <span className={getChangeClass(totalPercentChange)}>
+              ${totalReturn.toFixed(2)} ({totalPercentChange.toFixed(2)}%)
+            </span>
+          </p>
           <p>Open: ${stockData.open?.toFixed(2)}</p>
           <p>High: ${stockData.high?.toFixed(2)}</p>
           <p>Low: ${stockData.low?.toFixed(2)}</p>
