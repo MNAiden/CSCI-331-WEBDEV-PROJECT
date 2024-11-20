@@ -1,0 +1,99 @@
+
+.overview {
+display: flex;
+flex-direction: column;
+padding: 2rem;
+margin: 2rem auto;
+background-color: #ffffff;
+border-radius: 12px;
+max-width: 1600px;
+width: 90%;
+gap: 2rem;
+}
+
+/* Title */
+.overview-title {
+background-color: #ffffff;
+border-radius: 12px;
+box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+padding: 1.5rem;
+text-align: center;
+width: 100%;
+max-width: 800px;
+margin: 0 auto 2rem;
+}
+
+.overview-title h2 {
+font-size: 1.8rem;
+color: #2c3e50;
+margin-bottom: .5rem;
+}
+
+/* Chart Section */
+.overview-chart {
+    flex: 1;
+    margin: auto;
+    height: 100%;
+    max-width: 40%;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+.overview-chart canvas {
+    border-radius: 12px;
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+.overview-cards {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+width: 100%;
+margin-bottom: 1rem;
+}
+
+.overview-card {
+background-color: #ffffff;
+border-radius: 16px;
+padding: 0.1rem;
+box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+border: 1px solid #ecf0f1;
+text-align: center;
+cursor: pointer;
+transition: transform 0.2s ease, box-shadow 0.3s ease;
+max-height: 30px;
+}
+
+.overview-card:hover {
+transform: translateY(-1px);
+box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.overview-card h3 {
+font-size: 1.2rem;
+color: #2c3e50;
+margin-bottom: 0.5rem;
+}
+
+.overview-card p {
+font-size: 1rem;
+color: #34495e;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+.overview-cards {
+    grid-template-columns: 1fr; /* Single-column layout for smaller screens */
+}
+
+.overview-chart {
+    max-width: 90%;
+    margin-bottom: 1.5rem;
+}
+}
+

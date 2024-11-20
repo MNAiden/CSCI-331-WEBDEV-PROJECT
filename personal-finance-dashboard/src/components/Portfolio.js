@@ -4,16 +4,17 @@ import PortfolioPieChart from './PortfolioPieChart';
 import '../styles/portfolio.css';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import axios from 'axios';
-import { dynamicUserData } from '../data/mockData';
+import { dynamicUserData, setTotalEquity } from '../data/mockData';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const API_KEY = process.env.REACT_APP_ALPHA_VANTAGE_API_KEY;
 const API_LIMIT_WARNING = "API limit reached";
 
-const Portfolio = ({ totalEquity, setTotalEquity }) => {
+const Portfolio = () => {
   const { topStocks } = dynamicUserData.stocksInvestments;
-  const [equities, setEquities] = useState([]);
+  const [equities, setEquities] = useState([]); // Local state for equities
+  const [totalEquity, setTotalEquityState] = useState(dynamicUserData.stocksInvestments.totalEquity); // Local state for total equity
   const [lastFetchTime, setLastFetchTime] = useState('');
 
   useEffect(() => {
@@ -93,12 +94,13 @@ const Portfolio = ({ totalEquity, setTotalEquity }) => {
         })
       );
 
-      setEquities(equityData);
-      setTotalEquity(total); // Update the global total equity
+      setEquities(equityData); // Update local equities state
+      setTotalEquityState(total); // Update local totalEquity state
+      setTotalEquity(total); // Update global mock data
     };
 
     fetchAllStockData();
-  }, [topStocks, setTotalEquity]);
+  }, [topStocks]);
 
   const chartData = {
     labels: equities.map((stock) =>

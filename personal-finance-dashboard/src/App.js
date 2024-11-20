@@ -6,7 +6,7 @@ import Misc from './components/Misc';
 import './styles/App.css';
 
 function App() {
-    const [totalEquity, setTotalEquity] = useState(null); // Default to null to indicate "not loaded"
+    const [totalEquity, setTotalEquity] = useState();
 
     return (
         <div className="App">
@@ -14,9 +14,8 @@ function App() {
                 <h2>Personal Finance Dashboard</h2>
             </header>
             <main className="main-content">
-                {/* Only render Overview when totalEquity is available */}
                 <div className="box">
-                    {totalEquity !== null ? (
+                    {totalEquity !== 0 ? (
                         <Overview totalEquity={totalEquity} />
                     ) : (
                         <p>Loading Overview...</p>

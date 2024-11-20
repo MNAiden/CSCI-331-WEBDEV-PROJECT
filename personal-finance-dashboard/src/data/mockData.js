@@ -4,13 +4,13 @@ export const userData = {
     loans: 20000,
     assetDistribution: {
       cash: 0,
-      investments: 0, // This must match totalEquity
+      investments: 0,
       loans: 20000,
     },
   },
   stocksInvestments: {
     totalInvestment: 50000,
-    totalEquity: 0, // Drives investments in assetDistribution
+    totalEquity: 0,
     topStocks: [
       {
         name: "Apple",
@@ -81,34 +81,39 @@ export const userData = {
 export const getTotalEquity = () => userData.stocksInvestments.totalEquity;
 
 export const setTotalEquity = (value) => {
+  console.log('Updating totalEquity to:', value);
+
+  // Update global mockData directly
   userData.stocksInvestments.totalEquity = value;
-  userData.overview.assetDistribution.investments = value; // Synchronize investments
+  userData.overview.assetDistribution.investments = value;
+
+  // Update dynamic values within the same object
+  const updatedUserData = calculateDynamicValues(userData);
+  Object.assign(userData, updatedUserData);
 };
 
 // Function to dynamically update values in assetDistribution
 export function calculateDynamicValues(data) {
-  const result = JSON.parse(JSON.stringify(data)); // Deep copy of userData
-
   // Calculate total expenses and net income
-  const totalExpenses = result.monthlyBudget.expenses.reduce(
+  const totalExpenses = data.monthlyBudget.expenses.reduce(
     (sum, expense) => sum + expense.amount,
     0
   );
-  const netIncome = result.monthlyBudget.income - totalExpenses;
+  const netIncome = data.monthlyBudget.income - totalExpenses;
 
-  // Update dynamic fields
-  result.overview.assetDistribution.cash = netIncome;
-  result.overview.assetDistribution.investments = getTotalEquity(); // Always match totalEquity
+  // Update dynamic fields directly on `data`
+  data.overview.assetDistribution.cash = netIncome;
+  data.overview.assetDistribution.investments = data.stocksInvestments.totalEquity;
 
-  // Calculate financial goals
-  result.monthlyBudget.spending = (netIncome * result.monthlyBudget.spendingPercent) / 100;
-  result.monthlyBudget.savingsGoal = (netIncome * result.monthlyBudget.savingsGoalPercent) / 100;
-  result.monthlyBudget.investingAmount = (netIncome * result.monthlyBudget.investingPercent) / 100;
-  result.monthlyBudget.emergencyFund = (netIncome * result.monthlyBudget.emergencyFundPercent) / 100;
-  result.monthlyBudget.retirementContribution =
-    (netIncome * result.monthlyBudget.retirementContributionPercent) / 100;
+  // Update financial goals directly
+  data.monthlyBudget.spending = (netIncome * data.monthlyBudget.spendingPercent) / 100;
+  data.monthlyBudget.savingsGoal = (netIncome * data.monthlyBudget.savingsGoalPercent) / 100;
+  data.monthlyBudget.investingAmount = (netIncome * data.monthlyBudget.investingPercent) / 100;
+  data.monthlyBudget.emergencyFund = (netIncome * data.monthlyBudget.emergencyFundPercent) / 100;
+  data.monthlyBudget.retirementContribution =
+    (netIncome * data.monthlyBudget.retirementContributionPercent) / 100;
 
-  return result;
+  return data;
 }
 
 // Export the dynamically calculated user data
