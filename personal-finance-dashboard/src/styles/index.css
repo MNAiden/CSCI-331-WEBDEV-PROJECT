@@ -76,6 +76,7 @@ footer h4 {
   }
   .box {
     max-width: 85%; /* Slightly wider for laptops */
+
     padding: 1rem;
   }
 }
