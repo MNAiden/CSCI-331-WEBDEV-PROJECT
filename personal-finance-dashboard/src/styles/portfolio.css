@@ -1,182 +1,188 @@
 /* Portfolio Section */
 .portfolio {
-display: flex;
-flex-direction: column;
-padding: 2rem;
-margin: 2rem auto;
-background-color: #ffffff;
-border-radius: 12px;
-max-width: 1600px;
-width: 90%;
-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  max-width: 1600px;
+  width: 90%;
+  gap: 2rem;
 }
 /* Title and Last Fetch Time Shadow Box */
 .portfolio-title {
-background-color: #ffffff;
-border-radius: 12px;
-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-padding: 1.5rem;
-text-align: center; /* Center-align text */
-width: 100%;
-max-width: 800px; /* Limit maximum width */
-margin: 0 auto 2rem; /* Center the box and add spacing below */
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 1.5rem;
+  text-align: center; /* Center-align text */
+  width: 100%;
+  max-width: 800px; /* Limit maximum width */
+  margin: 0 auto 2rem; /* Center the box and add spacing below */
 }
 
 .portfolio-title h3 {
-font-size: 1.8rem;
-color: #2c3e50; /* Darker text color */
-margin-bottom: 1rem; /* Space below the heading */
+  font-size: 1.8rem;
+  color: #2c3e50; /* Darker text color */
+  margin-bottom: 1rem; /* Space below the heading */
 }
 
 .portfolio-title p {
-font-size: 1rem; /* Smaller font size for the timestamp */
-color: #7f8c8d; /* Muted text color */
+  font-size: 1rem; /* Smaller font size for the timestamp */
+  color: #7f8c8d; /* Muted text color */
 }
 
 /* Portfolio Content Section (Pie Chart and Cards) */
 .portfolio-content {
-display: flex;
-flex-direction: row; /* Horizontal layout for pie chart and stock cards */
-justify-content: space-between; /* Space between pie chart and stock cards */
-align-items: flex-start; /* Align items to the top */
-gap: 2rem; /* Space between pie chart and cards */
-width: 100%;
+  display: flex;
+  flex-direction: row; /* Horizontal layout for pie chart and stock cards */
+  justify-content: space-between; /* Space between pie chart and stock cards */
+  align-items: flex-start; /* Align items to the top */
+  gap: 2rem; /* Space between pie chart and cards */
+  width: 100%;
 }
 
 /* Pie Chart Section */
 .portfolio-pie-chart {
-flex: 1; /* Allow the chart to take up one-third of the width */
-max-width: 350px;
-min-height: 250px;
-background-color: #f9f9f9;
-padding: 1rem;
-border-radius: 16px;
-display: flex;
-justify-content: center; /* Center the chart horizontally */
-align-items: center; /* Center the chart vertically */
+  flex: 1; /* Allow the chart to take up one-third of the width */
+  max-width: 350px;
+  min-height: 250px;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center; /* Center the chart horizontally */
+  align-items: center; /* Center the chart vertically */
 }
 
 .portfolio-pie-chart canvas {
-border-radius: 12px;
-width: 100%; /* Ensure the chart fills the container */
-height: auto; /* Maintain aspect ratio */
+  border-radius: 12px;
+  width: 100%; /* Ensure the chart fills the container */
+  height: auto; /* Maintain aspect ratio */
 }
 
 /* Stock Cards Section */
 .stock-cards {
-flex: 2;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); /* Responsive grid */
-gap: 1.5rem;
-width: 100%;
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(210px, 1fr)
+  ); /* Responsive grid */
+  gap: 1.5rem;
+  width: 100%;
 }
 
 /* Individual Stock Card */
 .stock-card {
-background-color: #ffffff;
-border-radius: 16px;
-padding: 1rem;
-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-border: 1px solid #ecf0f1;
-cursor: pointer;
-transition: max-height 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-overflow: hidden;
-max-height: 80px; /* Default compact height */
-text-align: center;
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ecf0f1;
+  cursor: pointer;
+  transition: max-height 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  overflow: hidden;
+  max-height: 80px; /* Default compact height */
+  text-align: center;
 }
 
 .stock-card.expanded {
-max-height: 350px; /* Adjust height for expanded view */
-padding: 1.5rem; /* Extra padding when expanded */
-box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
-transform: translateY(-5px); /* Slight lift on expansion */
+  max-height: 350px; /* Adjust height for expanded view */
+  padding: 1.5rem; /* Extra padding when expanded */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* Slight lift on expansion */
 }
 
 /* Stock Card Header */
 .stock-card h4 {
-font-size: 1.2rem;
-color: #2c3e50;
-font-weight: bold;
-margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 /* Compact View */
 .stock-card p {
-font-size: 0.9rem;
-color: #7f8c8d;
-margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 0.5rem 0;
 }
 
 .stock-card p span {
-font-weight: bold;
-color: #34495e;
+  font-weight: bold;
+  color: #34495e;
 }
 
 /* Positive and Negative Changes */
 .stock-card span.positive {
-color: #27ae60; /* Accessible green for positive changes */
-font-weight: bold;
+  color: #27ae60; /* Accessible green for positive changes */
+  font-weight: bold;
 }
 
 .stock-card span.negative {
-color: #e74c3c; /* Accessible red for negative changes */
-font-weight: bold;
+  color: #e74c3c; /* Accessible red for negative changes */
+  font-weight: bold;
 }
 
 /* Responsive Design Adjustments */
 @media (max-width: 1600px) {
-.portfolio {
-width: 95%;
-padding: 1.5rem;
-}
+  .portfolio {
+    width: 95%;
+    padding: 1.5rem;
+  }
 
-.portfolio-content {
-gap: 1.5rem; /* Reduce gap on medium-sized screens */
-}
+  .portfolio-content {
+    gap: 1.5rem; /* Reduce gap on medium-sized screens */
+  }
 }
 
 @media (max-width: 768px) {
-.portfolio-content {
-flex-direction: column; /* stack pie chart and stock cards vertically */
-align-items: center;
-}
+  .portfolio-content {
+    flex-direction: column; /* stack pie chart and stock cards vertically */
+    align-items: center;
+  }
 
-.portfolio-pie-chart {
-max-width: 100%; /* allow full width for smaller screens */
-margin-bottom: 1.5rem;
-}
+  .portfolio-pie-chart {
+    max-width: 100%; /* allow full width for smaller screens */
+    margin-bottom: 1.5rem;
+  }
 
-.stock-cards {
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller card size */
-}
+  .stock-cards {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* Smaller card size */
+  }
 }
 
 @media (max-width: 480px) {
-.portfolio {
-padding: 1rem;
-}
+  .portfolio {
+    padding: 1rem;
+  }
 
-.portfolio-content {
-gap: 1rem; /* Tighten gap for small mobile screens */
-}
+  .portfolio-content {
+    gap: 1rem; /* Tighten gap for small mobile screens */
+  }
 
-.stock-cards {
-grid-template-columns: 1fr; /* Single-column layout for very small screens */
-}
+  .stock-cards {
+    grid-template-columns: 1fr; /* Single-column layout for very small screens */
+  }
 
-.stock-card {
-max-height: 100px; /* Smaller card height */
-}
+  .stock-card {
+    max-height: 100px; /* Smaller card height */
+  }
 
-.stock-card.expanded {
-max-height: 250px; /* Adjust expanded size for small screens */
-}
+  .stock-card.expanded {
+    max-height: 250px; /* Adjust expanded size for small screens */
+  }
 
-.stock-card h4 {
-font-size: 1rem; /* Adjust font size for smaller screens */
-}
+  .stock-card h4 {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
 
-.stock-card p {
-font-size: 0.8rem; /* Adjust text size for readability */
-}
+  .stock-card p {
+    font-size: 0.8rem; /* Adjust text size for readability */
+  }
 }
