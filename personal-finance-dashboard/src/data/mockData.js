@@ -37,8 +37,8 @@ export const userData = {
         name: "Alphabet",
         symbol: "GOOGL",
         initialInvestment: 8000,
-        purchasePrice: 138.40,
-        shares: 8000 / 138.40,
+        purchasePrice: 138.4,
+        shares: 8000 / 138.4,
       },
       {
         name: "Meta Platforms",
@@ -81,7 +81,7 @@ export const userData = {
 export const getTotalEquity = () => userData.stocksInvestments.totalEquity;
 
 export const setTotalEquity = (value) => {
-  console.log('Updating totalEquity to:', value);
+  console.log("Updating totalEquity to:", value);
 
   // Update global mockData directly
   userData.stocksInvestments.totalEquity = value;
@@ -103,13 +103,18 @@ export function calculateDynamicValues(data) {
 
   // Update dynamic fields directly on `data`
   data.overview.assetDistribution.cash = netIncome;
-  data.overview.assetDistribution.investments = data.stocksInvestments.totalEquity;
+  data.overview.assetDistribution.investments =
+    data.stocksInvestments.totalEquity;
 
   // Update financial goals directly
-  data.monthlyBudget.spending = (netIncome * data.monthlyBudget.spendingPercent) / 100;
-  data.monthlyBudget.savingsGoal = (netIncome * data.monthlyBudget.savingsGoalPercent) / 100;
-  data.monthlyBudget.investingAmount = (netIncome * data.monthlyBudget.investingPercent) / 100;
-  data.monthlyBudget.emergencyFund = (netIncome * data.monthlyBudget.emergencyFundPercent) / 100;
+  data.monthlyBudget.spending =
+    (netIncome * data.monthlyBudget.spendingPercent) / 100;
+  data.monthlyBudget.savingsGoal =
+    (netIncome * data.monthlyBudget.savingsGoalPercent) / 100;
+  data.monthlyBudget.investingAmount =
+    (netIncome * data.monthlyBudget.investingPercent) / 100;
+  data.monthlyBudget.emergencyFund =
+    (netIncome * data.monthlyBudget.emergencyFundPercent) / 100;
   data.monthlyBudget.retirementContribution =
     (netIncome * data.monthlyBudget.retirementContributionPercent) / 100;
 

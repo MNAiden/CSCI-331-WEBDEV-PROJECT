@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import StockCard from './StockCard';
-import PortfolioPieChart from './PortfolioPieChart';
-import '../styles/portfolio.css';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import axios from 'axios';
-import { dynamicUserData, setTotalEquity } from '../data/mockData';
+import React, { useEffect, useState } from "react";
+import StockCard from "./StockCard";
+import PortfolioPieChart from "./PortfolioPieChart";
+import "../styles/portfolio.css";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import axios from "axios";
+import { dynamicUserData, setTotalEquity } from "../data/mockData";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -14,8 +14,10 @@ const API_LIMIT_WARNING = "API limit reached";
 const Portfolio = () => {
   const { topStocks } = dynamicUserData.stocksInvestments;
   const [equities, setEquities] = useState([]); // Local state for equities
-  const [totalEquity, setTotalEquityState] = useState(dynamicUserData.stocksInvestments.totalEquity); // Local state for total equity
-  const [lastFetchTime, setLastFetchTime] = useState('');
+  const [totalEquity, setTotalEquityState] = useState(
+    dynamicUserData.stocksInvestments.totalEquity
+  ); // Local state for total equity
+  const [lastFetchTime, setLastFetchTime] = useState("");
 
   useEffect(() => {
     const fetchAllStockData = async () => {
@@ -37,7 +39,8 @@ const Portfolio = () => {
               ...stock,
               equity,
               currentPrice,
-              todaysReturn: stock.shares * (currentPrice - cachedData.data.previousClose),
+              todaysReturn:
+                stock.shares * (currentPrice - cachedData.data.previousClose),
               stockData: cachedData.data,
             };
           }
@@ -47,13 +50,15 @@ const Portfolio = () => {
               `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock.symbol}&apikey=${API_KEY}`
             );
 
-            if (response.data['Note']) {
+            if (response.data["Note"]) {
               console.warn(API_LIMIT_WARNING);
-              setLastFetchTime(cachedData?.timestamp || 'No recent data available');
+              setLastFetchTime(
+                cachedData?.timestamp || "No recent data available"
+              );
               return cachedData || { ...stock, equity: 0, stockData: null };
             }
 
-            const timeSeries = response.data['Time Series (Daily)'];
+            const timeSeries = response.data["Time Series (Daily)"];
             if (timeSeries) {
               const dates = Object.keys(timeSeries);
               const latestTimestamp = dates[0];
@@ -61,12 +66,12 @@ const Portfolio = () => {
               const previousData = timeSeries[dates[1]];
 
               const fetchedData = {
-                currentPrice: parseFloat(latestData['4. close']),
-                previousClose: parseFloat(previousData['4. close']),
-                open: parseFloat(latestData['1. open']),
-                high: parseFloat(latestData['2. high']),
-                low: parseFloat(latestData['3. low']),
-                volume: parseInt(latestData['5. volume'], 10),
+                currentPrice: parseFloat(latestData["4. close"]),
+                previousClose: parseFloat(previousData["4. close"]),
+                open: parseFloat(latestData["1. open"]),
+                high: parseFloat(latestData["2. high"]),
+                low: parseFloat(latestData["3. low"]),
+                volume: parseInt(latestData["5. volume"], 10),
               };
 
               const equity = stock.shares * fetchedData.currentPrice;
@@ -74,21 +79,27 @@ const Portfolio = () => {
 
               localStorage.setItem(
                 cacheKey,
-                JSON.stringify({ data: fetchedData, timestamp: now, successful: true })
+                JSON.stringify({
+                  data: fetchedData,
+                  timestamp: now,
+                  successful: true,
+                })
               );
 
               return {
                 ...stock,
                 equity,
                 currentPrice: fetchedData.currentPrice,
-                todaysReturn: stock.shares * (fetchedData.currentPrice - fetchedData.previousClose),
+                todaysReturn:
+                  stock.shares *
+                  (fetchedData.currentPrice - fetchedData.previousClose),
                 stockData: fetchedData,
               };
             } else {
               return { ...stock, equity: 0, stockData: null };
             }
           } catch (err) {
-            console.error('Error fetching stock data:', err);
+            console.error("Error fetching stock data:", err);
             return { ...stock, equity: 0, stockData: null };
           }
         })
@@ -112,11 +123,11 @@ const Portfolio = () => {
       {
         data: equities.map((stock) => stock.equity),
         backgroundColor: [
-          'rgba(34, 139, 34, 0.8)', // Green
-          'rgba(72, 61, 139, 0.8)', // Purple
-          'rgba(139, 0, 0, 0.8)', // Red
-          'rgba(255, 140, 0, 0.8)', // Orange
-          'rgba(0, 0, 139, 0.8)', // Blue
+          "rgba(34, 139, 34, 0.8)", // Green
+          "rgba(72, 61, 139, 0.8)", // Purple
+          "rgba(139, 0, 0, 0.8)", // Red
+          "rgba(255, 140, 0, 0.8)", // Orange
+          "rgba(0, 0, 139, 0.8)", // Blue
         ],
       },
     ],
